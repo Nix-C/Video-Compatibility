@@ -1,0 +1,6 @@
+Resources:
+
+- best article: https://rigor.com/blog/optimizing-animated-gifs-with-html5-video/
+
+- example video https://www.youtube.com/watch?v=noKFnmhEWDU
+- made using https://gifrun.com/

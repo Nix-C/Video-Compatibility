@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="default.css" rel="stylesheet">
+    <link href="nix-c_reset.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Videos On Websites</title>
+</head>
+<body class="">
+    <header>
+        <a href="#page-1">NIX-C</a>
+        <div id="header__right" onclick="document.querySelector('#header__right .ham-icon').classList.toggle('close'); document.body.classList.toggle('nav-open')">
+            <button id="nav-toggle" href="#">
+                <svg class="ham-icon"  viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path style="fill: rgb(216, 216, 216); stroke: currentColor; stroke-miterlimit: 6; stroke-width: 16px;" d="M 0 20 L 100 20"/>
+                    <path style="fill: rgb(216, 216, 216); stroke: currentColor; stroke-miterlimit: 6; stroke-width: 16px;" d="M 0 50 L 100 50"/>
+                    <path style="fill: rgb(216, 216, 216); stroke: currentColor; stroke-miterlimit: 6; stroke-width: 16px;" d="M 0 80 L 100 80"/>
+                </svg>                
+            </button>
+            <nav>
+                <a href="#page-2">Video Formats</a>
+                <a>Transparency</a>
+                <a>Compatibility</a>
+                <a>Cheat Sheet</a> 
+            </nav>
+        </div>
+
+    </header>
+    <section id="page-1" class="page-section">
+        <div class="video-wrapper animation-unblur">
+            <video muted autoplay play-inline loop>
+                <source src="assets/pexels-oleg-scherbak-4667381-3840x2160-30fps.mp4" type="video/mp4" >
+            </video>
+            <div class="overlay">
+                <div class="hero-text">
+                    <h3>Videos & Animations</h3>
+                    <h1>Breath New Life</h1>
+                    <h3>Into Web Design</h3>
+                    <span class="subtitle">"NIX-C" Nathaniel Campbell</span>
+                </div>
+                <div class="animation-flip video-credit" style="--delay: 2000;"><a href="https://www.instagram.com/vidstory2020/" target="_blank">
+                    Video Credit: Олег Щербак
+                    <!-- <span >@vidstory2020</span> -->
+                </a></div>
+            </div>    
+        </div>
+    </section>
+    <section id="page-2">
+        <div class="article-area">
+            <h1>Media Formats</h1>
+            <div id="example-moonlight">
+                <div 
+                    style="display: flex;">
+                    <div class="vid-stats">
+                        <img src="/assets/MOONLIGHT_FOX.gif" width="520" height="292" style="padding: 0; width: 520px; height: 292px" >
+                        <ul>
+                            <li>Format: GIF</li>
+                            <li>File Size:  3.5MB</li>
+                        </ul>
+                    </div>
+
+                    <div class="vid-stats">
+                        <video muted autoplay play-inline loop 
+                        width="520" height="292" style="padding: 0; width: 520px; height: 292px">
+                            <source src="/assets/MOONLIGHT_FOX.mp4" type="video/mp4" >
+                        </video>
+                        <ul>
+                            <li>Format: MP4 (H.654)</li>
+                            <li>File Size:  373KB</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/watch?v=noKFnmhEWDU" class="subtitle"><span>Video Credit: @SmallButera/<i class="fa-brands fa-youtube"></i></span></a>
+            </div>
+    </section>
+    <footer></footer>
+    <script src="https://kit.fontawesome.com/14682aeafa.js" crossorigin="anonymous"></script>
+</body>
+</html>
