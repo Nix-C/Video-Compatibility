@@ -20,8 +20,9 @@
                 </svg>                
             </button>
             <nav>
-                <a href="#page-2">Video Formats</a>
-                <a>Transparency</a>
+                <a href="#page-2">Non-Static Media</a>
+                <a href="#page-3">GIF vs MP4</a>
+                <a href="#page-4">Transparent Media</a>
                 <a>Compatibility</a>
                 <a>Cheat Sheet</a> 
             </nav>
@@ -30,7 +31,7 @@
     </header>
     <section id="page-1" class="page-section">
         <div class="video-wrapper animation-unblur">
-            <video muted autoplay play-inline loop>
+            <video muted autoplay play-inline loop style="transform: rotateY(180deg);">
                 <source src="assets/pexels-oleg-scherbak-4667381-3840x2160-30fps.mp4" type="video/mp4" >
             </video>
             <div class="overlay">
@@ -49,31 +50,85 @@
     </section>
     <section id="page-2">
         <div class="article-area">
-            <h1>Media Formats</h1>
+            <h1>The Challenege of Non-Static Media</h1>
+            <p>When adding an element to a website, developers may consider the following:</p>
+            <ul>
+                <li>Purpose of the element</li>
+                <li>User interaction with and view the element</li>
+                <li>Presence and complexity of the element</li>
+            </ul>
+            <p>The majority of the elements used in web design would be considered "static" elements (ie. body text, headers, links, or even static images). Since HTML is static by nature, these elements are (almost) unanimously and unifromally supported accross web browsers.</p>
+            <p>Unfortunately, the same cannot be said for "non-static" elements. Video formats, and transparent video formats in particular, are very lacking in consistent browser support. Thus, when adding non-static we one must also consider the following:</p>
+            <ul>
+                <li>File size and impact on performance</li>
+                <li>Use of transparency</li>
+                <li>Cross-browser support</li>
+            </ul>
+            <p>Ultimately, these three (and some of the first three) help us determine what animated media format is best suited for our purposes.</p>
+            <p>Do not fear, all hope is not lost. For most readers, two heroic media formats will serve our purposes well.</p>
+            
+    </section>
+    <section id="page-3">
+        <h1>GIF vs MP4</h1>
+        <div class="article-area">
+            <p>Without diving into their histories, the two most common animated fromats are GIF and MP4 (specifically using H.264 compression). It should be noted that MP4 is a video format, but GIF is still considered an image format. Both have very consistent cross-browser support, but which one is right for you?</p>
+
+            <h2>File Size and MP4</h2>
+            <p>While GIF files are very easy to implement, they have extremely poor compression compared to MP4. This makes GIFs perfectly acceptable when used lightly, but websites that use a LOT of animated content (i.e. twitter.com and giphy.com), file sizes need to be controlled.</p>
+            <p>MP4's on the otherhand have AMAZING compression. Looking below, we have a gif generated from a youtube video using <a href="https://gifrun.com/" target="_blank">gifrun.com</a> that came out to ~3.5M. Using a media conversion tool like <a href="https://ffmpeg.org/" target="_blank">FFmpeg</a>, we can convert the GIF into an MP4 that is only 373KB. The MP4 version is a mere <strong>10%</strong> of the original GIF!</p>
             <div id="example-moonlight">
                 <div 
                     style="display: flex;">
                     <div class="vid-stats">
-                        <img src="assets/MOONLIGHT_FOX.gif" width="520" height="292" style="padding: 0; width: 520px; height: 292px" >
+                        <img src="assets/MOONLIGHT_FOX.gif" width="520" height="292" style="padding: 0; width: 520px; height: auto;" >
                         <ul>
                             <li>Format: GIF</li>
                             <li>File Size:  3.5MB</li>
                         </ul>
                     </div>
-
+    
                     <div class="vid-stats">
                         <video muted autoplay play-inline loop 
-                        width="520" height="292" style="padding: 0; width: 520px; height: 292px">
+                        width="520" height="292" style="padding: 0; width: 520px; height: auto;">
                             <source src="assets/MOONLIGHT_FOX.mp4" type="video/mp4" >
                         </video>
                         <ul>
-                            <li>Format: MP4 (H.654)</li>
+                            <li>Format: MP4 (H.264)</li>
                             <li>File Size:  373KB</li>
                         </ul>
                     </div>
                 </div>
-                <a href="https://www.youtube.com/watch?v=noKFnmhEWDU" class="subtitle"><span>Video Credit: @SmallButera/<i class="fa-brands fa-youtube"></i></span></a>
+                <a href="https://www.youtube.com/watch?v=noKFnmhEWDU" class="subtitle video-credit"><span>Video Credit:<i class="fa-brands fa-youtube"></i>SmallButera</span></a>
             </div>
+            <p>FFmpeg is completely free and becomes handly tool once you get the hang of it. <a href="https://rigor.com/blog/optimizing-animated-gifs-with-html5-video/" target="_blank">This fantastic article</a> by Billy Hoffman of Rigor Inc further breaks down the benefits and practices for using MP4s in place of GIFs on your website. He also offers this handy FFmpeg command that is optimized for web:</p>
+            <p class="code-area">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4</p>
+
+        </div>
+    </section>
+    <section id="page-4">
+        <h1>Transparent Media !!!WIP!!!</h1>
+        <div class="article-area">
+            <p>So we know that MP4 with GIF as a fallback will cover most of our bases. But what if we REALLY wanted to use a transparent video?</p>
+            <p>One video format that <a href="https://caniuse.com/webm" target="_blank">does support transparency on most browsers is WEBM</a>, with the exception of Safari. Remembering that in our video element, we can supply multiple sources for the browser to pull from. All we need to do is supply another video format for Safari and we'll be set.</p>
+
+            <!-- <p>Or at least it didn't. In 2017, Apple shipped macOS High Sierra and iOS 11 with HEVC H.265, a direct successor to the H.265 codec for MP4. Not only does it offer higher compression quality and other features, but it supports an alpha channel (which handles transparency).</p>
+            <p>So what's the hold up?</p>
+            <p>While HVEC H.265 is exciting, it is only supported by Apple OS's and browsers. Firefox, Chrome, Windows, and Android are not equipped with the proper encoder tools to display H.265 compressed video. This also means that anyone NOT using macOS</p>
+            <p>For those lucky few, you have the option of offering both MOV from apple and WebM to support the trinity of major browsers</p> -->
+            <div >
+                <video style="background-color: gray;" autoplay loop plays-inline>
+                    <source src="/assets/msn.webm">
+                </video>
+                <span class="subtitle">A simple WebM video (by me!)</span>
+            </div>
+            <p>Popular combos:</p>
+            <ul>
+                <li>webm - firefox, chrominium, edge</li>
+                <li>mov - safari and safari mobile</li>
+                <li>GIF and PNG backups for other browsers</li>
+            </ul>
+
+        </div>
     </section>
     <footer></footer>
     <script src="https://kit.fontawesome.com/14682aeafa.js" crossorigin="anonymous"></script>
