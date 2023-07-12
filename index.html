@@ -116,10 +116,15 @@
             <p>While HVEC H.265 is exciting, it is only supported by Apple OS's and browsers. Firefox, Chrome, Windows, and Android are not equipped with the proper encoder tools to display H.265 compressed video. This also means that anyone NOT using macOS</p>
             <p>For those lucky few, you have the option of offering both MOV from apple and WebM to support the trinity of major browsers</p> -->
             <div >
-                <video style="background-color: gray;" autoplay loop plays-inline>
-                    <source src="assets/msn.webm">
+                <video muted autoplay playsinline loop>
+                    <!-- For Firefox and Chrome -->
+                    <source src="assets/DELM-Brian-02-1.webm" type="video/webm" />
+                    <!-- For Safari -->
+                    <source src="assets/DELM-Brian-02-1.mov" type='video/mp4; codecs="hvc1"' />
+                    <!-- Backup in case someone uses edge -->
+                    <img src="assets/Brian-02.gif" type="img" />
                 </video>
-                <span class="subtitle">A simple WebM video (by me!)</span>
+                <span class="subtitle">ffmpeg -i your_original_file.mov -c:v libvpx-vp9 -lossless 1 -auto-alt-ref 0 new_webm_file.webm</span>
             </div>
             <p>Popular combos:</p>
             <ul>
@@ -130,6 +135,7 @@
 
         </div>
     </section>
+
     <footer></footer>
     <script src="https://kit.fontawesome.com/14682aeafa.js" crossorigin="anonymous"></script>
 </body>
