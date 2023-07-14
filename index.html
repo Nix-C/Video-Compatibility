@@ -101,7 +101,7 @@
                 <a href="https://www.youtube.com/watch?v=noKFnmhEWDU" class="subtitle video-credit"><span>Video Credit:<i class="fa-brands fa-youtube"></i>SmallButera</span></a>
             </div>
             <p>FFmpeg is completely free and becomes handly tool once you get the hang of it. <a href="https://rigor.com/blog/optimizing-animated-gifs-with-html5-video/" target="_blank">This fantastic article</a> by Billy Hoffman of Rigor Inc further breaks down the benefits and practices for using MP4s in place of GIFs on your website. He also offers this handy FFmpeg command that is optimized for web:</p>
-            <p class="code-area">ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4</p>
+            <pre class="code-area"><code >ffmpeg -i animated.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4</code></pre>
 
         </div>
     </section>
@@ -109,8 +109,19 @@
         <h1>Transparent Media !!!WIP!!!</h1>
         <div class="article-area">
             <p>So we know that MP4 with GIF as a fallback will cover most of our bases. But what if we REALLY wanted to use a transparent video?</p>
-            <p>One video format that <a href="https://caniuse.com/webm" target="_blank">does support transparency on most browsers is WEBM</a>, with the exception of Safari. Remembering that in our video element, we can supply multiple sources for the browser to pull from. All we need to do is supply another video format for Safari and we'll be set.</p>
+            <!-- <p>One video format that <a href="https://caniuse.com/webm" target="_blank">does support transparency on most browsers is WEBM</a>, with the exception of Safari. Remembering that in our video element, we can supply multiple sources for the browser to pull from. All we need to do is supply another video format for Safari and we'll be set.</p> -->
+<pre class="code-area">
+<code>&lt;video muted autoplay playsinline loop&gt;
+    &lt;!-- For Safari --&gt;
+    &lt;source src="assets/DELM-Brian-02-1.mov" type='video/mp4; codecs="hvc1"' /&gt;
 
+    &lt;!-- For Firefox and Chrome --&gt;
+    &lt;source src="assets/DELM-Brian-02-1.webm" type="video/webm" /&gt;
+
+    &lt;!-- Backup in case someone uses edge --&gt;
+    &lt;img src="assets/Brian-02.gif" type="img" /&gt;
+&lt;/video&gt;</code></pre>
+            
             <!-- <p>Or at least it didn't. In 2017, Apple shipped macOS High Sierra and iOS 11 with HEVC H.265, a direct successor to the H.265 codec for MP4. Not only does it offer higher compression quality and other features, but it supports an alpha channel (which handles transparency).</p>
             <p>So what's the hold up?</p>
             <p>While HVEC H.265 is exciting, it is only supported by Apple OS's and browsers. Firefox, Chrome, Windows, and Android are not equipped with the proper encoder tools to display H.265 compressed video. This also means that anyone NOT using macOS</p>
@@ -130,8 +141,8 @@
             </div>
             <p>Popular combos:</p>
             <ul>
-                <li>webm - firefox, chrominium, edge</li>
-                <li>mov - safari and safari mobile</li>
+                <li>webm - firefox, chrominium, edge (VP9)</li>
+                <li>mov - safari and safari mobile (HEVC)</li>
                 <li>GIF and PNG backups for other browsers</li>
             </ul>
 

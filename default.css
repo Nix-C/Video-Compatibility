@@ -178,14 +178,20 @@ header nav {
     text-align: center;
 }
 
-.code-area {
-    font-family: monospace;
+.code-line, .code-area {
     overflow-x: auto;
     background-color: darkslategrey;
-    color: wheat !important;
     border-radius: 5px;
     padding: .2em 1em;
     width: fit-content;
+}
+
+.code-area code, .code-area code{
+    color: wheat !important;
+    font-family: monospace;    
+}
+
+.code-line {
     white-space: nowrap;
 }
 
