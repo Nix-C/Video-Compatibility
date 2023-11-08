@@ -4,3 +4,5 @@ Resources:
 
 - example video https://www.youtube.com/watch?v=noKFnmhEWDU
 - made using https://gifrun.com/
+
+- mp4 crafting with ffmpeg guide: https://gist.github.com/Vestride/278e13915894821e1d6f
