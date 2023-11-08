@@ -6,3 +6,7 @@ Resources:
 - made using https://gifrun.com/
 
 - mp4 crafting with ffmpeg guide: https://gist.github.com/Vestride/278e13915894821e1d6f
+
+Issue encountered while serving video from a CDN. Looks like apple/safari really want the appropriate headers like so:
+content-type: video/mp4
+content-length: 38870650
